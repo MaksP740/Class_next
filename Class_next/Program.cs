@@ -15,14 +15,17 @@ class Program
         // student.GPA = 10;
         
         Employee e1 = new Employee();
-        Employee emp1 = new Employee(
-            "Пономаренко Максим",
-            "01.01.2000",
-            "+380671234567",
-            "maks@gmail.com",
+        Employee emp1 = new Employee("Пономаренко Максим", "01.01.2000", "+380671234567", 
+            "maks@gmail.com", 
             "Менеджер",
             "Досвід роботи 5 років"
         );
+        Console.WriteLine("ПІБ: " + emp1._PIB);
+        Console.WriteLine("Дата народження: " + emp1._birthDate);
+        Console.WriteLine("Телефон: " + emp1.Telefon);
+        Console.WriteLine("Email: " + emp1._Email);
+        Console.WriteLine("Посада: " + emp1._posada);
+        Console.WriteLine("Опис: " + emp1._descripte);
         
     }
 }
@@ -78,6 +81,7 @@ class Employee
     public string posada;
     public string descripte;
 
+    
     public string _PIB
     {
         get{return PIB;}
@@ -104,7 +108,6 @@ class Employee
             birthDate = value;
         }
     }
-
     public string Telefon
     {
         get { return telefon; }
@@ -131,13 +134,11 @@ class Employee
             email = value;
         }
     }
-
     public string _posada
     {
         get { return posada; }
         set { posada = value; }
     }
-
     public string _descripte
     {
         get { return descripte; }
