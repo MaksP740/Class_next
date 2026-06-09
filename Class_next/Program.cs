@@ -54,66 +54,101 @@ class Student
 
 class Employee
 {
-    public Employee(){}
-    public Employee(string pib, string birthDate, string telefon, string email, string posada, string descripte)
+    private string pib;
+    private string birthDate;
+    private string telefon;
+    private string email;
+    private string posada;
+    private string descripte;
+
+    public Employee() { }
+
+    public Employee(string pib, string birthDate, string telefon,
+                    string email, string posada, string descripte)
     {
         _PIB = pib;
-        _PIB = birthDate;
+        _birthDate = birthDate;
         _Telefon = telefon;
         _Email = email;
-        _posada = posada;
-        _descripte = descripte;
+        _Posada = posada;
+        _Descripte = descripte;
     }
-    public string PIB;
-    public string birthDate;
-    public string telefon;
-    public string email;
-    public string posada;
-    public string descripte;
 
     public string _PIB
     {
-        get{return PIB;}
+        get { return pib; }
         set
         {
-            if (value.Length < 10 || value.Length > 20)
+            if (value.Length < 10 || value.Length > 50)
             {
-                Console.WriteLine("Error: invalid PIB length");
+                Console.WriteLine("Помилка: некоректне ПІБ");
                 return;
             }
-            PIB = value;
+
+            pib = value;
         }
     }
-    
+
     public string _birthDate
     {
-        get { return _PIB; }
+        get { return birthDate; }
         set
         {
-            if (value == "")
+            if (string.IsNullOrWhiteSpace(value))
             {
-                Console.WriteLine("Name is empty");
+                Console.WriteLine("Дата народження не може бути порожньою");
                 return;
             }
-            _PIB = value;
+
+            birthDate = value;
         }
     }
-    public string _Telefon { get; set; }
+
+    public string _Telefon
+    {
+        get { return telefon; }
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                Console.WriteLine("Телефон не може бути порожнім");
+                return;
+            }
+
+            telefon = value;
+        }
+    }
 
     public string _Email
     {
         get { return email; }
         set
         {
-            if (value != "")
+            if (string.IsNullOrWhiteSpace(value))
             {
-                Console.WriteLine("Email is empty");
+                Console.WriteLine("Email не може бути порожнім");
                 return;
             }
+
+            if (!value.Contains("@"))
+            {
+                Console.WriteLine("Email повинен містити символ @");
+                return;
+            }
+
             email = value;
         }
     }
-    
-    public string _posada { get; set; }
-    public string _descripte { get; set; }
+
+    public string _Posada
+    {
+        get { return posada; }
+        set { posada = value; }
+    }
+
+    public string _Descripte
+    {
+        get { return descripte; }
+        set { descripte = value; }
+    }
 }
